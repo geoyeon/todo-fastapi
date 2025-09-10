@@ -1,0 +1,28 @@
+# 가상 환경
+.venv/
+venv/
+myenv/
+
+# 파이썬 컴파일 파일
+__pycache__/
+*.pyc
+
+# IDE 캐시 및 설정
+.vscode/
+.idea/
+
+# 환경 변수 파일 (중요!)
+.env
+.env.*
+
+# 로그 및 빌드
+logs/
+build/
+dist/
+
+# 테스트 캐시
+.pytest_cache/
+
+# 운영체제 관련
+.DS_Store
+Thumbs.db
