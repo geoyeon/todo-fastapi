@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
 
@@ -13,7 +13,7 @@ class TodoUpdateModel(BaseModel):
 
     isComplete: Optional[bool] = None
 
-    updatedAt: datetime = datetime.now()
+    updatedAt: datetime = Field(default_factory=datetime.now)
 
     model_config = {
         'populate_by_name': True
