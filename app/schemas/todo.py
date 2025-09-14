@@ -15,9 +15,9 @@ class TodoModel(BaseModel):
 
     isComplete: Optional[bool] = False
 
-    createdAt: Optional[datetime] = None
+    createdAt: Optional[datetime] = datetime.now()
 
-    updatedAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = datetime.now()
 
     model_config = {
         'populate_by_name': True
