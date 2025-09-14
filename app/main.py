@@ -22,7 +22,7 @@ async def db_lifespan(app: FastAPI):
 app = FastAPI(
     title="Todo FastAPI",
     description="Todo FastAPI",
-    version="0.1.0",
+    version="0.2.0",
     lifespan=db_lifespan
 )
 
