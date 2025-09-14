@@ -19,35 +19,13 @@ async def get_todos(todo_service: TodoService = Depends(get_my_service)) -> List
 
 @router.get("/{todo_id}", response_model=TodoModel, status_code=status.HTTP_200_OK)
 async def get_todo(todo_id: str, todo_service: TodoService = Depends(get_my_service)) -> Optional[TodoModel]:
-    try:
-        todo = await todo_service.get_todo(todo_id)
-    except HTTPException as e:
-        raise e
-    except:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal Server Error - DB",
-        )
-
-
-    if not todo:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Todo not found",
-        )
+    todo = await todo_service.get_todo(todo_id)
 
     return todo
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def insert_todo(todo_input: TodoModel, todo_service: TodoService = Depends(get_my_service)) -> bool:
-    try:
-        await todo_service.create_todo(todo_input)
-    except:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal Server Error - DB",
-        )
-    # print(input)
+    await todo_service.create_todo(todo_input)
     return True
 
 @router.patch("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)

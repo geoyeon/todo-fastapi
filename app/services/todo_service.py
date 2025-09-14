@@ -49,7 +49,6 @@ class TodoService:
             )
 
         todo = await self.db.todos.find_one({"_id": todo_object_id})
-        print(todo)
 
         if todo:
             return TodoModel(**todo)
